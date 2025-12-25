@@ -1,8 +1,11 @@
 import { Routes } from '@angular/router';
-import { CatalogList } from './features/catalog/catalog-list/catalog-list';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'catalog', pathMatch: 'full' },
-  { path: 'catalog', component: CatalogList },
-  
-];
+  {
+    path: '',
+    loadComponent: () => import('./pages/home-page/home-page').then(m => m.HomePage),
+  },
+  {
+    path: '**',
+    redirectTo: '',
+  }];
