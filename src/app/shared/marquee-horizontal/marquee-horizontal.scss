@@ -1,0 +1,18 @@
+.marquee-horizontal{
+    // width: 100vw;
+    // margin: 1rem;
+}
+
+.marquee-horizontal-container{
+        overflow: hidden;
+        height: 100%;
+        white-space: nowrap;
+
+        span{
+            display: inline-flex;
+            color: black;
+            font-weight: bold;
+            align-items: center;
+            padding: 2rem;
+        }
+}
