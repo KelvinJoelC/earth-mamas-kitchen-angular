@@ -1,11 +1,14 @@
-<mat-card class="catalog-card">
-  <img mat-card-image [src]="product.imageUrl" [alt]="product.name" />
-  <mat-card-title>{{ product.name }}</mat-card-title>
-  <mat-card-content>
-    <p>{{ product.description }}</p>
-    <p><strong>${{ product.price }}</strong></p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="primary">Add to Cart</button>
-  </mat-card-actions>
-</mat-card>
+<section class="slide">
+  <div class="card ">
+    <div class="image-wrapper">
+      <img class="card-image" src="/img/mermaidCake.webp" alt=""/>
+    </div>
+    <div class="content">
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.description }}</p>
+      <a href="/" class="btn">
+        View More
+      </a>
+    </div>
+  </div>
+</section>
