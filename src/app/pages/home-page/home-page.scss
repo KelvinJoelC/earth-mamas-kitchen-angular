@@ -33,11 +33,17 @@ section{
 }
 
 .explore-container{
-    // margin-top: -8rem;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
     background-color:antiquewhite;
-    height: 800px;
-    padding: 0 2rem;
+    padding: 2rem 0;
+    margin-top: -2rem;
 
+    h1{
+        font-size: 2rem;
+        padding: 2rem;
+    }
 }
 
 p {
@@ -55,9 +61,17 @@ p {
 
         .container-flex{
             grid-column: span 2;
-
         }
+    }
+    .explore-container{
+        padding: 5rem 0;
+        margin-top: -5rem;
+        text-align: left;
 
+        h1{
+            font-size: 3rem;
+            padding: 2rem;
+        }
     }
 }
 

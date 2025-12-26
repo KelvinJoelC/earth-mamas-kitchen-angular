@@ -4,10 +4,17 @@
 }
 .embla__container {
   display: flex;
-  margin-left:0.1rem;
+  margin: 0 2rem;
 }
 .embla__slide {   
-  flex: none;
+  flex: 0 0 100%;
   width: max-content;
-  margin-right: 0.5rem;
+  margin-right: 1rem;
+}
+
+@media (min-width: 768px) {
+
+  .embla__slide{
+      flex: 0 0 33%;
+  }
 }
