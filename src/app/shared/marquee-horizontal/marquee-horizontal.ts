@@ -10,6 +10,6 @@ export class MarqueeHorizontal {
   @Input() word: string = 'hola';
 
   get repeatedWords(): string {
-  return Array(10).fill(this.word).join(' ');
+    return Array(10).fill(this.word).join(' ');
   }
 }
