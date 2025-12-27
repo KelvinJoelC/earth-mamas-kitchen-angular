@@ -1,6 +1,9 @@
 section{
     position: relative;
     box-sizing: border-box;
+    &:last-child{
+        padding-bottom: 4rem;
+    }
 }
 
 .hero-container{
