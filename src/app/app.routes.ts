@@ -16,6 +16,12 @@ export const routes: Routes = [
         loadComponent: () =>
           import ('./pages/catalog-page/catalog-page')
             .then(m => m.CatalogPage)
+      },
+      {
+        path: 'catalog/:id',
+        loadComponent: () =>
+          import ('./pages/catalog-item-page/catalog-item-page')
+            .then(m => m.CatalogItemPage)
       }
     ]
   },

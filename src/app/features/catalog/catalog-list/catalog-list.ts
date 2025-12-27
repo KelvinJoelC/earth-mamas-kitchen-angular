@@ -1,8 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { ProductService } from '../../../core/services/product.service';
+import { CatalogService } from '../../../core/services/catalog.service';
 import { CatalogItem } from '../catalog-item/catalog-item';
-import { Product } from '../../../core/models/product.model';
+import { Catalog } from '../../../core/models/catalog.model';
 import EmblaCarousel from 'embla-carousel';
 
 
@@ -14,11 +14,11 @@ import EmblaCarousel from 'embla-carousel';
 })
 export class CatalogList {
   @ViewChild('emblaRoot', { static: true }) emblaRoot!: ElementRef;
-  products: Product[];
+  catalog: Catalog[];
   embla!: ReturnType<typeof EmblaCarousel>;
 
-  constructor(private productService: ProductService) {
-    this.products = this.productService.getProducts();
+  constructor(private catalogService: CatalogService) {
+    this.catalog = this.catalogService.getCatalog();
   }
   
   ngAfterViewInit() {

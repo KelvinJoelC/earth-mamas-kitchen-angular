@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Product } from '../../../core/models/product.model';
+import { Catalog } from '../../../core/models/catalog.model';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
@@ -9,5 +9,5 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './catalog-item.scss',
 })
 export class CatalogItem {
-  @Input() product!: Product;
+  @Input() product!: Catalog;
 }
