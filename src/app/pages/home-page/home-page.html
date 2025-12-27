@@ -13,7 +13,7 @@
 <section class="explore-container">
     <h1>Explore the BR Range</h1>    
     <app-catalog-list></app-catalog-list>
-    <a href="catalog" class="btn-catalog">View Catalog</a>
+    <a [routerLink]="['/catalog']" href="catalog" class="btn-catalog">View Catalog</a>
 </section>
 <section class="rewards-container">
     <app-marquee-horizontal [word]="'Rewards'"></app-marquee-horizontal>

@@ -10,7 +10,7 @@
     <section class="item" [style.background]="item.background" >
         <h3>{{item.title}}</h3>
         <p>{{item.description}}</p>
-        <a href="/catalog/{{item.id}}">ViewMore</a>
+        <a [routerLink]="['catalog', item.id]">ViewMore</a>
         <img class="card-image animate-slideIn" src="/img/mermaidCake.webp" alt=""/>
     </section>
 </ng-container>

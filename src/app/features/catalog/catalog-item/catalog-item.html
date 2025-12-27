@@ -6,7 +6,7 @@
     <div class="content">
       <h3>{{product.title}}</h3>
       <p>{{product.description}}</p>
-      <a href="catalog/{{product.id}}" class="btn">
+      <a [routerLink]="['catalog', product.id]" class="btn">
         View More
       </a>
     </div>
