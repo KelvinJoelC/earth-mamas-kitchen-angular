@@ -1,4 +1,4 @@
-<section *ngIf="product" class="container" [style.background]=product.props.bg>
+<section *ngIf="product$ | async as product" class="container" [style.background]=product.props.bg>
     <h1>{{product.title}}</h1>
     <img class="card-image animate-slideIn" src="/img/mermaidCake.webp" alt="product.title" />
     <div class="feature-container">
