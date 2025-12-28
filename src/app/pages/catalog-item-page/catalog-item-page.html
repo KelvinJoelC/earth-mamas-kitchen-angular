@@ -30,26 +30,14 @@
             </summary>
             <form [formGroup]="form" (ngSubmit)="submit()">
                 <!-- <app-catalog-item-form [form]="form" [features]="features" ></app-catalog-item-form> -->
-                <button type="submit">Submit</button>
+                <label for="notes">Notes</label>
+                <textarea id="notes" formControlName="notes" rows="3" maxlength="150"
+                    placeholder="E.g. specific requests or preferences"
+                    class="focus:outline-none focus:ring-2 focus:ring-violeta-medio"></textarea> <!-- ("></text..) Dont put space  -->
+                    
+
+                <button type="submit" class="primary">Submit</button>
             </form>
-            <!-- <form id="preOrderForm" method="POST" data-product-title=product.title
-                class="p-2 group mt-2 rounded-2xl bg-white/80  shadow-xl border border-slate-100 flex flex-col gap-2 z-20">
-                <div class="panel-container">
-                    <label for="notes">Notes</label>
-                    <textarea id="notes" name="notes" rows="3" maxlength="150" placeholder="E.g. specific requests or preferences"
-                        class="focus:outline-none focus:ring-2 focus:ring-violeta-medio"></textarea>
-                </div>
-                <div class="flex gap-2 justify-end pt-2">
-                    <button type="reset"
-                        class="text-xs px-3 py-2 rounded-full border border-slate-200 text-slate-500 hover:bg-slate-50">
-                        Clean
-                    </button>
-                    <button type="submit"
-                        class="text-xs px-4 py-2 rounded-full bg-green-500 text-white font-semibold hover:bg-verde-medio shadow-sm">
-                        Confirm
-                    </button>
-                </div>
-            </form> -->
         </details>
     </div>
 </section>
