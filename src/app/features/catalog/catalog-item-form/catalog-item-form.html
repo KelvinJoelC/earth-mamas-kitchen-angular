@@ -1,0 +1,11 @@
+<ng-container *ngIf="fields$ | async as fields">
+    <ng-container *ngFor="let option of fields.options | keyvalue">
+        <h4>{{ option.key }}</h4>
+        <div [formGroup]="form">
+            @switch (option.key) {
+                @case ('sizes') { } 
+                @case ('buttercreamStyle') { }
+                @default { }
+            }
+        </div>
+</ng-container>

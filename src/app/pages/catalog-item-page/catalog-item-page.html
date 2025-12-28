@@ -29,13 +29,7 @@
                 Order Now
             </summary>
             <form [formGroup]="form" (ngSubmit)="submit()">
-                <!-- <app-catalog-item-form [form]="form" [features]="features" ></app-catalog-item-form> -->
-                <label for="notes">Notes</label>
-                <textarea id="notes" formControlName="notes" rows="3" maxlength="150"
-                    placeholder="E.g. specific requests or preferences"
-                    class="focus:outline-none focus:ring-2 focus:ring-violeta-medio"></textarea> <!-- ("></text..) Dont put space  -->
-                    
-
+                <app-catalog-item-form [form]="form" [id]="product.id"></app-catalog-item-form>
                 <button type="submit" class="primary">Submit</button>
             </form>
         </details>

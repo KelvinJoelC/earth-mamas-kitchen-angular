@@ -4,11 +4,12 @@ import { ProductService } from '../../core/services/product.service';
 import { Product } from '../../core/models/product.model';
 import { NgIf, AsyncPipe } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule }  from '@angular/forms';
-import { filter, map, Observable } from 'rxjs';
+import { filter, map, Observable, switchMap } from 'rxjs';
+import { CatalogItemForm } from '../../features/catalog/catalog-item-form/catalog-item-form';
 
 @Component({
   selector: 'app-catalog-item-page',
-  imports: [NgIf,AsyncPipe,ReactiveFormsModule],
+  imports: [NgIf,AsyncPipe,ReactiveFormsModule,CatalogItemForm],
   templateUrl: './catalog-item-page.html',
   styleUrl: './catalog-item-page.scss',
 })
@@ -19,7 +20,7 @@ export class CatalogItemPage {
   readonly product$: Observable<Product | undefined> = this.route.paramMap.pipe(
     map(params => params.get('id')),
     filter((id): id is string => id !== null),
-    map(id => this.productService.getProduct(id))
+    switchMap(id => this.productService.getProduct(id))
   );
   
   form = new FormGroup({
