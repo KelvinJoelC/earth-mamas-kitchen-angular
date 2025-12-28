@@ -28,7 +28,7 @@ export class CatalogItemPage {
   })
 
   submit(){
-    const notes =  this.form.value.notes ?? '';
-    console.log(notes)
+    const formValues =  this.form.value;
+    console.log(formValues)
   }
 }

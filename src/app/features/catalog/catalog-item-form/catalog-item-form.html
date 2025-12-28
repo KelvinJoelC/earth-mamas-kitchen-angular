@@ -1,11 +1,37 @@
-<ng-container *ngIf="fields$ | async as fields">
-    <ng-container *ngFor="let option of fields.options | keyvalue">
-        <h4>{{ option.key }}</h4>
-        <div [formGroup]="form">
-            @switch (option.key) {
-                @case ('sizes') { } 
-                @case ('buttercreamStyle') { }
-                @default { }
+<div [formGroup]="form" class="form-container">
+  @for (fields of fields$ | async; track fields.key) {
+    @switch (fields.key) {
+      @case('addOns') {
+        <section class="form-control-container" formArrayName="addOns">
+          <ul>
+            @for (extraProduct of fields.values; track extraProduct; let i = $index) {
+              <li>
+                <mat-checkbox [formControlName]="i">
+                  {{extraProduct}}
+                </mat-checkbox>
+              </li>
             }
-        </div>
-</ng-container>
+          </ul>
+        </section>
+      }
+      @default {
+        <mat-form-field class="form-control-container">
+            <mat-label>{{ fields.key }}</mat-label>
+              <mat-select formControlName="{{ fields.key }}">
+                @for (value of fields.values; track value) {
+                  <mat-option [value]="value"> {{ value }} </mat-option>
+                }
+              </mat-select>
+        </mat-form-field>
+      }
+    }
+  }
+  <div class="form-control-container">
+    <mat-form-field>
+      <mat-label>Notes</mat-label>
+      <textarea  matInput #message formControlName="notes" rows="3" maxlength="150"></textarea>
+      <mat-hint align="start"><strong>Don't disclose personal info</strong> </mat-hint>
+      <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+    </mat-form-field>
+  </div>
+</div>
