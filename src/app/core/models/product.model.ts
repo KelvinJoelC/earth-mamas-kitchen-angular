@@ -2,7 +2,7 @@ export interface ProductOptionSize {
   sizeInch?: number;
   shape?: string | 'Heart' | 'Round' | 'Square' | 'Rectangle';
   servings?: number;
-  label?: string; 
+  label?: string;
   pieces?: number;
 }
 
@@ -57,8 +57,8 @@ export interface Product {
   logistics?: string;
   props: {
     bg: string;
-    h: string; 
-    padding: string; 
+    h: string;
+    padding: string;
   };
   route?: string;
   cta?: string;
@@ -71,7 +71,7 @@ export type OptionKey =
   | 'cupcakeType' | 'buttercreamStyle' | 'flavors' | 'colorPalettes'
   | 'quantities' | 'arrangementType' | 'presentation' | 'container'
   | 'addOns' | 'minimumOrder' | 'flavorSets' | 'branding' | 'service'
-  | 'packages' | 'messageCard' | 'inscriptions' | 'servingGuideIncluded' 
+  | 'packages' | 'messageCard' | 'inscriptions' | 'servingGuideIncluded'
   | 'noteOnTransport' | 'allergens' | 'notes';
 
 export const OPTION_LABELS: Record<OptionKey, string> = {

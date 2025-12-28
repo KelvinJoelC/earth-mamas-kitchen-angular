@@ -1,5 +1,7 @@
 <div class="embla" #emblaRoot>
   <div class="embla__container catalog-container">
-    <app-catalog-item class="embla__slide" *ngFor="let product of catalog" [product]="product"></app-catalog-item>
+    @for(product of catalog; track product){
+      <app-catalog-item class="embla__slide" [product]="product"></app-catalog-item>
+    }
   </div>
 </div>

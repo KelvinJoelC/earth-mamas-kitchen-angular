@@ -1,5 +1,4 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { NgFor } from '@angular/common';
 import { CatalogService } from '../../../core/services/catalog.service';
 import { CatalogItem } from '../catalog-item/catalog-item';
 import { Catalog } from '../../../core/models/catalog.model';
@@ -8,7 +7,7 @@ import EmblaCarousel from 'embla-carousel';
 
 @Component({
   selector: 'app-catalog-list',
-  imports: [CatalogItem,NgFor],
+  imports: [CatalogItem],
   templateUrl: './catalog-list.html',
   styleUrl: './catalog-list.scss',
 })
@@ -20,7 +19,7 @@ export class CatalogList {
   constructor(private catalogService: CatalogService) {
     this.catalog = this.catalogService.getCatalog();
   }
-  
+
   ngAfterViewInit() {
     this.embla = EmblaCarousel(this.emblaRoot.nativeElement, { loop: false });
   }

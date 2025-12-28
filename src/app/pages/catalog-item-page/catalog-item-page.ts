@@ -2,14 +2,14 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../core/services/product.service';
 import { Product } from '../../core/models/product.model';
-import { NgIf, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule }  from '@angular/forms';
 import { filter, map, Observable, switchMap } from 'rxjs';
 import { CatalogItemForm } from '../../features/catalog/catalog-item-form/catalog-item-form';
 
 @Component({
   selector: 'app-catalog-item-page',
-  imports: [NgIf,AsyncPipe,ReactiveFormsModule,CatalogItemForm],
+  imports: [AsyncPipe,ReactiveFormsModule,CatalogItemForm],
   templateUrl: './catalog-item-page.html',
   styleUrl: './catalog-item-page.scss',
 })

@@ -2,11 +2,13 @@
   overflow: hidden;
   width: 100%;
 }
+
 .embla__container {
   display: flex;
   margin: 0 2rem;
 }
-.embla__slide {   
+
+.embla__slide {
   flex: 0 0 100%;
   width: max-content;
   margin-right: 1rem;
@@ -14,7 +16,7 @@
 
 @media (min-width: 768px) {
 
-  .embla__slide{
-      flex: 0 0 33%;
+  .embla__slide {
+    flex: 0 0 33%;
   }
 }

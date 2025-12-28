@@ -1,37 +1,39 @@
-<section *ngIf="product$ | async as product" class="container" [style.background]=product.props.bg>
-    <h1>{{product.title}}</h1>
-    <img class="card-image animate-slideIn" src="/img/mermaidCake.webp" alt="product.title" />
-    <div class="feature-container">
-        <div class="panel-container">
-            <h2>{{product.title}}</h2>
-            <div class="description">
-                <!-- {{product.priceFrom &&  <p class="text-lg">From: {{product.priceFrom}}$</p> }}
-              {{product.leadTimeDays && <p class="text-md">Lead time: {{product.leadTimeDays}} days</p>}} -->
+@if(product$ | async; as product){
+    <section class="container" [style.background]=product.props.bg>
+        <h1>{{product.title}}</h1>
+        <img class="card-image animate-slideIn" src="/img/mermaidCake.webp" alt="product.title" />
+        <div class="feature-container">
+            <div class="panel-container">
+                <h2>{{product.title}}</h2>
+                <div class="description">
+                    <!-- {{product.priceFrom &&  <p class="text-lg">From: {{product.priceFrom}}$</p> }}
+                  {{product.leadTimeDays && <p class="text-md">Lead time: {{product.leadTimeDays}} days</p>}} -->
+                </div>
+                <p>{{product.description}}</p>
             </div>
-            <p>{{product.description}}</p>
+            <details class="panel-container">
+                <summary class="flex items-center bg-white text-2xl pb-2 font-bold
+                text-black cursor-pointer hover:bg-violeta-medio transition">
+                    <!-- {OPTION_LABELS['allergens']}    -->
+                    allegers
+                    <hr class="my-2 border-pink-400" />
+                </summary>
+                <div class="text-sm text-slate-700">
+                    <!-- {product.options.allergens ? product.options.allergens.join(', ') : 'No allergens information
+                    available.'} -->
+                    No allergens information
+                    available.
+                </div>
+            </details>
+            <details id='preOrderDetail' open class="">
+                <summary class="summary-btn ">
+                    Order Now
+                </summary>
+                <form [formGroup]="form" (ngSubmit)="submit()">
+                    <app-catalog-item-form [form]="form" [id]="product.id"></app-catalog-item-form>
+                    <button type="submit" class="primary">Submit</button>
+                </form>
+            </details>
         </div>
-        <details class="panel-container">
-            <summary class="flex items-center bg-white text-2xl pb-2 font-bold
-            text-black cursor-pointer hover:bg-violeta-medio transition">
-                <!-- {OPTION_LABELS['allergens']}    -->
-                allegers
-                <hr class="my-2 border-pink-400" />
-            </summary>
-            <div class="text-sm text-slate-700">
-                <!-- {product.options.allergens ? product.options.allergens.join(', ') : 'No allergens information
-                available.'} -->
-                No allergens information
-                available.
-            </div>
-        </details>
-        <details id='preOrderDetail' open class="">
-            <summary class="summary-btn ">
-                Order Now
-            </summary>
-            <form [formGroup]="form" (ngSubmit)="submit()">
-                <app-catalog-item-form [form]="form" [id]="product.id"></app-catalog-item-form>
-                <button type="submit" class="primary">Submit</button>
-            </form>
-        </details>
-    </div>
-</section>
+    </section>
+}
