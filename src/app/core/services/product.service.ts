@@ -180,5 +180,10 @@ export class ProductService {
   getProducts(): ProductList {
     return this.products;
   }
+
+  getProduct(id: string): Product | undefined {
+
+    return this.products.find(product => product.id === id);
+  }
 }
 
