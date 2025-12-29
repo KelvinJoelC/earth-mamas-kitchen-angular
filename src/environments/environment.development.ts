@@ -1,6 +1,6 @@
 export const environment = {
     production: false,
 
-    supabaseUrl : 'https://xyzcompany.supabase.co',
-    supabaseKey : 'publishable-or-anon-key',
+    supabaseUrl : 'https://qgzxwzuaahuyqwcatptg.supabase.co',
+    supabaseKey : 'sb_publishable_GbPhc5-_jN64jxS7OzYSgQ_OJycuj-y',
 };
