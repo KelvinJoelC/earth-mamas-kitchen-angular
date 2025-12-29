@@ -20,19 +20,19 @@ export class ProductService {
       leadTimeDays: 2,
       dietary: ['vegetarian'],
       options: {
-        cupcakeType: ['Vanilla butter sponge', 'Chocolate sponge', 'Lemon', 'Red velvet'],
-        buttercreamStyle: ['Roses', 'Peonies', 'Dahlias', 'Mixed garden'],
-        quantities: [7, 12, 19, 24],
-        colorPalettes: ['Pastel mix', 'Blush & ivory', 'Lilac & sage', 'Bold brights', 'Custom'],
-        fillings: ['No filling', 'Raspberry jam', 'Chocolate ganache', 'Lemon curd'],
-        presentation: ['Bouquet wrap', 'Hatbox', 'Basket'],
-        addOns: [
-          'Mini topper “Happy Birthday”',
-          'Printed ribbon',
-          'Macaron accents (6 pcs)',
-          'Sparkle dust finish'
-        ],
-        allergens: ['gluten', 'eggs', 'milk'],
+        // cupcakeType: ['Vanilla butter sponge', 'Chocolate sponge', 'Lemon', 'Red velvet'],
+        // buttercreamStyle: ['Roses', 'Peonies', 'Dahlias', 'Mixed garden'],
+        // quantities: [7, 12, 19, 24],
+        // colorPalettes: ['Pastel mix', 'Blush & ivory', 'Lilac & sage', 'Bold brights', 'Custom'],
+        // fillings: ['No filling', 'Raspberry jam', 'Chocolate ganache', 'Lemon curd'],
+        // presentation: ['Bouquet wrap', 'Hatbox', 'Basket'],
+        // addOns: [
+        //   'Mini topper “Happy Birthday”',
+        //   'Printed ribbon',
+        //   'Macaron accents (6 pcs)',
+        //   'Sparkle dust finish'
+        // ],
+        // allergens: ['gluten', 'eggs', 'milk'],
       },
       notes: 'Ideal para regalos; transporte en vertical. Mejor consumir el mismo día.',
       props: {
@@ -128,7 +128,7 @@ export class ProductService {
         allergens: ['gluten', 'eggs', 'milk', 'soy'],
         colorPalettes: ['Pastel garden', 'Sunset tones', 'Green & white', 'Custom'],
         container: ['Box', 'Basket', 'Hatbox', 'Reusable vase'],
-        addOns: ['Message card', 'Ribbon branding', 'Edible shimmer', 'Mini topper']
+        // addOns: ['Message card', 'Ribbon branding', 'Edible shimmer', 'Mini topper']
       },
       props: {
         bg: 'linear-gradient(135deg, white 0%, #dba2b1 30%, #d88b6f 70%, white 100%)',
@@ -165,7 +165,7 @@ export class ProductService {
           { name: 'Coffee break', serves: 20, includes: '40 mini cupcakes + 20 cookies', approxPrice: 120 },
           { name: 'Launch party', serves: 50, includes: '100 mini cupcakes + macaron tower', approxPrice: 360 }
         ],
-        addOns: ['Display stands rental', 'Signage cards', 'Cutlery & napkins']
+        // addOns: ['Display stands rental', 'Signage cards', 'Cutlery & napkins']
       },
       logistics: 'Para setup en sitio, acceso 60–90 min antes del evento.',
       props: {
