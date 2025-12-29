@@ -30,20 +30,21 @@ type OptionEntry = {
 export class CatalogItemForm {
   @Input({ required: true }) form!: FormGroup;
   @Input({ required: true }) id!: string;
-
+  
   private readonly productService = inject(ProductService);
 
   fields$: Observable<OptionEntry[]> = of([]);
 
   ngOnInit(): void {
+    this.form.addControl('notes', new FormControl(''));    
     this.fields$ = this.productService.getProduct(this.id).pipe(
       map(product => {
         if (!product?.options) { return []; }
-
         const fields = Object.entries(product.options).map(([key, values]) => ({
           key: key as keyof ProductOptions,
           values
         }));
+
 
         //Dynamic formControls
         fields.forEach(item => {
