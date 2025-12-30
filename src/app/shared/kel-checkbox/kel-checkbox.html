@@ -1,0 +1,13 @@
+<ng-container [formGroup]="form">
+    <section class="form-control-container" formArrayName="{{field.key}}">
+        <ul>
+            @for (extraProduct of field.values; track extraProduct) {
+            <li>
+                <mat-checkbox [formControlName]="extraProduct">
+                    {{extraProduct}}
+                </mat-checkbox>
+            </li>
+            }
+        </ul>
+    </section>
+</ng-container>

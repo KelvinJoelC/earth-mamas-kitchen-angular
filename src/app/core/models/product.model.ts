@@ -74,36 +74,149 @@ export type OptionKey =
   | 'packages' | 'messageCard' | 'inscriptions' | 'servingGuideIncluded'
   | 'noteOnTransport' | 'allergens' | 'notes';
 
-export const OPTION_LABELS: Record<OptionKey, string> = {
-  sizes: 'Sizes & servings',
-  sponge: 'Sponge',
-  fillings: 'Fillings',
-  frostings: 'Frostings',
-  finishes: 'Finishes',
-  themes: 'Themes',
-  cupcakeType: 'Cupcake types',
-  buttercreamStyle: 'Buttercream flowers',
-  flavors: 'Flavors',
-  colorPalettes: 'Color palettes',
-  quantities: 'Bouquet sizes',
-  arrangementType: 'Arrangement type',
-  presentation: 'Presentation',
-  container: 'Container',
-  addOns: 'Add-ons',
-  minimumOrder: 'Minimum order',
-  flavorSets: 'Flavor sets',
-  branding: 'Branding options',
-  service: 'Service',
-  packages: 'Event packages',
-  messageCard: 'Message card included',
-  inscriptions: 'Custom inscription',
-  servingGuideIncluded: 'Serving guide included',
-  noteOnTransport: 'Transport note',
-  allergens: 'Allergens',
-  notes: 'Note'
+export const OPTION_CONFIG: Record<OptionKey, FieldConfig> = {
+  sizes: {
+    label: 'Sizes & servings',
+    type: 'select',
+    visible: true
+  },
+  sponge: {
+    label: 'Sponge',
+    type: 'select',
+    visible: true
+  },
+  fillings: {
+    label: 'Fillings',
+    type: 'select',
+    visible: true
+  },
+  frostings: {
+    label: 'Frostings',
+    type: 'select',
+    visible: true
+  },
+  finishes: {
+    label: 'Finishes',
+    type: 'select',
+    visible: true
+  },
+  themes: {
+    label: 'Themes',
+    type: 'select',
+    visible: true
+  },
+  cupcakeType: {
+    label: 'Cupcake types',
+    type: 'select',
+    visible: true
+  },
+  buttercreamStyle: {
+    label: 'Buttercream flowers',
+    type: 'select',
+    visible: true
+  },
+  flavors: {
+    label: 'Flavors',
+    type: 'select',
+    visible: true
+  },
+  colorPalettes: {
+    label: 'Color palettes',
+    type: 'select',
+    visible: true
+  },
+  quantities: {
+    label: 'Bouquet sizes',
+    type: 'select',
+    visible: true
+  },
+  arrangementType: {
+    label: 'Arrangement type',
+    type: 'select',
+    visible: true
+  },
+  presentation: {
+    label: 'Presentation',
+    type: 'select',
+    visible: true
+  },
+  container: {
+    label: 'Container',
+    type: 'select',
+    visible: true
+  },
+  addOns: {
+    label: 'Add-ons',
+    type: 'checkbox',
+    visible: true
+  },
+  minimumOrder: {
+    label: 'Minimum order',
+    type: 'text',
+    visible: false
+  },
+  flavorSets: {
+    label: 'Flavor sets',
+    type: 'checkbox',
+    visible: true
+  },
+  branding: {
+    label: 'Branding options',
+    type: 'checkbox',
+    visible: true
+  },
+  service: {
+    label: 'Service',
+    type: 'select',
+    visible: true
+  },
+  packages: {
+    label: 'Event packages',
+    type: 'select',
+    visible: true
+  },
+  messageCard: {
+    label: 'Message card included',
+    type: 'checkbox',
+    visible: true
+  },
+  inscriptions: {
+    label: 'Custom inscription',
+    type: 'text',
+    visible: true
+  },
+  servingGuideIncluded: {
+    label: 'Serving guide included',
+    type: 'checkbox',
+    visible: false
+  },
+  noteOnTransport: {
+    label: 'Transport note',
+    type: 'text',
+    visible: false
+  },
+  allergens: {
+    label: 'Allergens',
+    type: 'select',
+    visible: false
+  },
+  notes: {
+    label: 'Note',
+    type: 'text',
+    visible: true
+  }
 };
+
+export type FieldType = 'select' | 'checkbox' | 'radio' | 'text';
 
 export type OptionEntry = {
   key: keyof ProductOptions;
   values: string[];
+  config: FieldConfig
+};
+
+export type FieldConfig = {
+  label: string;
+  type: FieldType;
+  visible: boolean;
 };

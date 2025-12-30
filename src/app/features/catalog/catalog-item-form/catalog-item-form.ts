@@ -3,17 +3,19 @@ import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular
 import { ProductService } from '../../../core/services/product.service';
 import { AsyncPipe } from '@angular/common';
 import { map, Observable, of } from 'rxjs';
-import { OptionEntry, ProductOptions } from '../../../core/models/product.model';
+import { OPTION_CONFIG, OptionEntry, OptionKey, ProductOptions } from '../../../core/models/product.model';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { KelSelect } from '../../../shared/kel-select/kel-select';
+import { KelCheckbox } from '../../../shared/kel-checkbox/kel-checkbox';
 
 @Component({
   selector: 'app-catalog-item-form',
   imports: [
     KelSelect,
+    KelCheckbox,
     AsyncPipe,
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -39,23 +41,17 @@ export class CatalogItemForm {
         if (!product?.options) { return []; }
         const fields:OptionEntry[] = Object.entries(product.options).map(([key, values]) => ({
           key: key as keyof ProductOptions,
-          values
+          values,
+          config: OPTION_CONFIG[key as OptionKey]
         }));
 
-
-        //Dynamic formControls
+        //Dynamic formControls for default
         fields.forEach(item => {
           if (!this.form.contains(item.key)) {
-            if (item.key === 'addOns') {
-              let addOns = new FormArray<FormControl<boolean | null>>([])
-              item.values.forEach(() => {
-                addOns.push(new FormControl(false));
-              })
-              this.form.addControl(item.key, addOns);
-            } else {
+            if (item.config.type === 'text' || item.config.type === 'select') {
               this.form.addControl(item.key, new FormControl(''));
             }
-          }
+          };
         });
         return fields;
       })

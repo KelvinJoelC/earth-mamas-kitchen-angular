@@ -1,18 +1,8 @@
 <div [formGroup]="form" class="form-container">
   @for (fields of fields$ | async; track fields.key) {
-    @switch (fields.key) {
-      @case('addOns') {
-        <section class="form-control-container" formArrayName="addOns">
-          <ul>
-            @for (extraProduct of fields.values; track extraProduct; let i = $index) {
-              <li>
-                <mat-checkbox [formControlName]="i">
-                  {{extraProduct}}
-                </mat-checkbox>
-              </li>
-            }
-          </ul>
-        </section>
+    @switch (fields.config.type) {
+      @case('checkbox') {
+        <app-kel-checkbox [form]="form" [field]="fields"/>
       }
       @default {
         <app-kel-select [form]="form" [field]="fields"/>
