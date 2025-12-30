@@ -103,3 +103,7 @@ export const OPTION_LABELS: Record<OptionKey, string> = {
   notes: 'Note'
 };
 
+export type OptionEntry = {
+  key: keyof ProductOptions;
+  values: string[];
+};

@@ -15,14 +15,7 @@
         </section>
       }
       @default {
-        <mat-form-field class="form-control-container">
-            <mat-label>{{ fields.key }}</mat-label>
-              <mat-select formControlName="{{ fields.key }}">
-                @for (value of fields.values; track value) {
-                  <mat-option [value]="value"> {{ value }} </mat-option>
-                }
-              </mat-select>
-        </mat-form-field>
+        <app-kel-select [form]="form" [field]="fields"/>
       }
     }
   }

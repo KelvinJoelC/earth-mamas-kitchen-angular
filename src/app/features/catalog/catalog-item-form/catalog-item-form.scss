@@ -2,31 +2,37 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    background-color:#f8fafcaf;
+    padding: 0.5rem;
+    border-radius: 0.75rem;
 }
 
-.form-control-container {
-    box-sizing: border-box;
-    padding: .5rem;
-    background-color: white;
-    border-radius: 1.5rem;
-    width: 100%;
+// .form-control-container {
+//     box-sizing: border-box;
+//     padding: .5rem;
+//     background-color: white;
+//     border-radius: 1.5rem;
+//     width: 100%;
+// }
 
-    textarea {
-        box-sizing: border-box;
-        width: 100%;
-        border-radius: 0.75rem;
-        border-color: #60a8f0;
-        padding: 0.5rem 0.75rem;
-    }
+//     textarea {
+//         box-sizing: border-box;
+//         width: 100%;
+//         border-radius: 0.75rem;
+//         border-color: #60a8f0;
+//         padding: 0.5rem 0.75rem;
+//     }
 
-    ul {
-        padding-inline-start: 1rem;
-        display: grid;
+//     ul {
+//         padding-inline-start: 1rem;
+//         display: grid;
 
-        li {
-            list-style-type: none;
-            width: max-content;
+//         li {
+//             list-style-type: none;
+//             width: max-content;
 
-        }
-    }
-}
+//         }
+//     }
+// }
+
+/* Contenedor */

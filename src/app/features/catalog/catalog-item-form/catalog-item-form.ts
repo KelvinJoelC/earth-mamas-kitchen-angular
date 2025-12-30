@@ -3,20 +3,17 @@ import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular
 import { ProductService } from '../../../core/services/product.service';
 import { AsyncPipe } from '@angular/common';
 import { map, Observable, of } from 'rxjs';
-import { Product, ProductOptions } from '../../../core/models/product.model';
+import { OptionEntry, ProductOptions } from '../../../core/models/product.model';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
-type OptionEntry = {
-  key: keyof ProductOptions;
-  values: readonly Product[];
-};
+import { KelSelect } from '../../../shared/kel-select/kel-select';
 
 @Component({
   selector: 'app-catalog-item-form',
   imports: [
+    KelSelect,
     AsyncPipe,
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -33,14 +30,14 @@ export class CatalogItemForm {
   
   private readonly productService = inject(ProductService);
 
-  fields$: Observable<OptionEntry[]> = of([]);
+  fields$: Observable<OptionEntry[]> = of();
 
   ngOnInit(): void {
     this.form.addControl('notes', new FormControl(''));    
     this.fields$ = this.productService.getProduct(this.id).pipe(
       map(product => {
         if (!product?.options) { return []; }
-        const fields = Object.entries(product.options).map(([key, values]) => ({
+        const fields:OptionEntry[] = Object.entries(product.options).map(([key, values]) => ({
           key: key as keyof ProductOptions,
           values
         }));
