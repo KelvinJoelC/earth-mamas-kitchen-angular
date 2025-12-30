@@ -1,11 +1,11 @@
 <div class="form-field" [formGroup]="form">
-    <label [for]="fields.key" class="form-field__label">
-        {{ fields.key }}
+    <label [for]="field.key" class="form-field__label">
+        {{ field.key }}
     </label>
     <hr />
-    <select class="form-field__control" [formControlName]="fields.key" [attr.name]="fields.key">
+    <select class="form-field__control" [formControlName]="field.key" [attr.name]="field.key">
         <option value="" disabled selected> Select an option </option>
-        @for (value of fields.values; track value) {
+        @for (value of field.values; track value) {
         <option [value]="value"> {{ value }} </option>
         }
     </select>
