@@ -1,0 +1,49 @@
+.form-textarea {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 0.75rem;
+    padding: .5rem .75rem;
+}
+
+.form-textarea__label {
+    font-size: 1rem;
+    padding: .4rem 0.3rem 0rem;
+    font-weight: 500;
+    color: #0f172a;
+}
+
+.form-textarea__control{
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.75rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: #0f172a;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    resize: none;
+}
+
+.form-textarea__control:hover {
+    border-color: #cbd5f5;
+}
+
+.form-textarea__control:focus {
+    border-color: #c026d3;
+    box-shadow: 0 0 0 2px rgba(192, 38, 211, 0.4);
+}
+
+.form-field__control:disabled {
+    background-color: #f8fafc;
+    color: #94a3b8;
+    cursor: not-allowed;
+}
+
+hr {
+    border: 1px solid #fb64b6;
+    width: 100%;
+}

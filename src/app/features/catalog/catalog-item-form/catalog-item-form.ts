@@ -10,12 +10,14 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { KelSelect } from '../../../shared/kel-select/kel-select';
 import { KelCheckbox } from '../../../shared/kel-checkbox/kel-checkbox';
+import { KelTextarea } from '../../../shared/kel-textarea/kel-textarea';
 
 @Component({
   selector: 'app-catalog-item-form',
   imports: [
     KelSelect,
     KelCheckbox,
+    KelTextarea,
     AsyncPipe,
     ReactiveFormsModule,
     MatFormFieldModule,
