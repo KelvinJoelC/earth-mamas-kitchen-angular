@@ -1,9 +1,13 @@
 <ng-container [formGroup]="form">
-    <section class="form-control-container" formArrayName="{{field.key}}">
-        <ul>
+    <section class="form-field" formArrayName="{{field.key}}">
+        <label [for]="field.key" class="form-field__label">
+            {{ field.key }}
+        </label>
+        <hr />
+        <ul class="form-field__control">
             @for (extraProduct of field.values; track extraProduct) {
             <li>
-                <mat-checkbox [formControlName]="extraProduct">
+                <mat-checkbox  class="form-field__checkbox" [formControlName]="extraProduct">
                     {{extraProduct}}
                 </mat-checkbox>
             </li>

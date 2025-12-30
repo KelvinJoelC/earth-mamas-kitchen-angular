@@ -3,7 +3,7 @@
         <label class="form-textarea__label" for="notes">Notes</label>
         <hr />
         <textarea class="form-textarea__control" id="notes" formControlName="notes" rows="3" maxlength="150" placeholder="test" autocapitalize="sentences"></textarea>
-        <div class="hint-row">
+        <div class="form-textarea__hint-row">
             <small>Don't disclose personal info</small>
             <small>{{ form.get('notes')?.value?.length || 0 }} / 150</small>
         </div>

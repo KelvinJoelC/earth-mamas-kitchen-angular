@@ -14,7 +14,11 @@
     font-weight: 500;
     color: #0f172a;
 }
-
+.form-textarea__hint-row{
+    display: inline-flex;
+    justify-content: space-between;
+    padding: 0.25rem;
+}
 .form-textarea__control{
     background-color: #ffffff;
     border: 1px solid #e2e8f0;
