@@ -72,7 +72,7 @@ export type OptionKey =
   | 'quantities' | 'arrangementType' | 'presentation' | 'container'
   | 'addOns' | 'minimumOrder' | 'flavorSets' | 'branding' | 'service'
   | 'packages' | 'messageCard' | 'inscriptions' | 'servingGuideIncluded'
-  | 'noteOnTransport' | 'allergens' | 'notes';
+  | 'noteOnTransport' | 'allergens' | 'notes' | 'formats';
 
 export const OPTION_CONFIG: Record<OptionKey, FieldConfig> = {
   sizes: {
@@ -203,6 +203,11 @@ export const OPTION_CONFIG: Record<OptionKey, FieldConfig> = {
   notes: {
     label: 'Note',
     type: 'text',
+    visible: true
+  }, 
+  formats: {
+    label: 'Format',
+    type: 'select',
     visible: true
   }
 };
