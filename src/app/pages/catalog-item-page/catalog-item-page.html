@@ -1,5 +1,7 @@
-@if(product$ | async; as product){
-    <section class="container" [style.background]=product.props.bg>
+@if(product$ | async){ <ng-container></ng-container>} <!-- Open Obs -->
+
+@if(product(); as product){
+    <section class="container" [style.background]=product.props?.bg>
         <h1>{{product.title}}</h1>
         <img class="card-image animate-slideIn" src="/img/mermaidCake.webp" alt="product.title" />
         <div class="feature-container">

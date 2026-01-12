@@ -38,25 +38,25 @@ export class CatalogItemForm {
 
   ngOnInit(): void {
     this.form.addControl('notes', new FormControl(''));    
-    this.fields$ = this.productService.getProduct(this.id).pipe(
-      map(product => {
-        if (!product?.options) { return []; }
-        const fields:OptionEntry[] = Object.entries(product.options).map(([key, values]) => ({
-          key: key as keyof ProductOptions,
-          values,
-          config: OPTION_CONFIG[key as OptionKey]
-        }));
+    // this.fields$ = this.productService.getProduct(this.id).pipe(
+    //   map(product => {
+    //     if (!product?.options) { return []; }
+    //     const fields:OptionEntry[] = Object.entries(product.options).map(([key, values]) => ({
+    //       key: key as keyof ProductOptions,
+    //       values,
+    //       config: OPTION_CONFIG[key as OptionKey]
+    //     }));
 
-        //Dynamic formControls for default
-        fields.forEach(item => {
-          if (!this.form.contains(item.key)) {
-            if (item.config.type === 'text' || item.config.type === 'select') {
-              this.form.addControl(item.key, new FormControl(''));
-            }
-          };
-        });
-        return fields;
-      })
-    );
+    //     //Dynamic formControls for default
+    //     fields.forEach(item => {
+    //       if (!this.form.contains(item.key)) {
+    //         if (item.config.type === 'text' || item.config.type === 'select') {
+    //           this.form.addControl(item.key, new FormControl(''));
+    //         }
+    //       };
+    //     });
+    //     return fields;
+    //   })
+    // );
   }
 } 

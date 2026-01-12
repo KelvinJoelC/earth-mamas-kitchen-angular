@@ -1,11 +1,11 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../core/services/product.service';
-import { Product, ProductOptions } from '../../core/models/product.model';
-import { AsyncPipe } from '@angular/common';
+import { ProductOptions } from '../../core/models/product.model';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { BehaviorSubject, filter, map, Observable, switchMap } from 'rxjs';
+import { BehaviorSubject, filter, map, tap } from 'rxjs';
 import { CatalogItemForm } from '../../features/catalog/catalog-item-form/catalog-item-form';
 import { OrderApiService } from '../../core/services/order-api.service';
 
@@ -24,13 +24,17 @@ export class CatalogItemPage {
 
   productId!: string;
 
-  readonly product$: Observable<Product | undefined> = this.route.paramMap.pipe(
+  readonly product$ = this.route.paramMap.pipe(
     map(params => params.get('id')),
     filter((id): id is string => id !== null),
-    switchMap(id => {
+    tap(id => {
       this.productId = id;
-      return this.productService.getProduct(id)
+      return this.productService.loadProducts()
     })
+  );
+
+  readonly product = computed(() =>
+    this.productService.getProductById(this.productId)
   );
 
   form = new FormGroup({})

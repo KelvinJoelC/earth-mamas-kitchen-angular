@@ -13,6 +13,12 @@ export interface ProductPackage {
   approxPrice: number;
 }
 
+export interface ProductOptionsProp{
+  bg?: string;
+  h?: number;
+  padding?: number;
+}
+
 export interface ProductOptions {
   cupcakeType?: string[];
   buttercreamStyle?: string[];
@@ -47,21 +53,11 @@ export interface Product {
   title: string;
   description: string;
   img: string;
-  priceFrom?: number;
-  tags?: string[];
+  price?: number;
   leadTimeDays?: number;
-  dietary?: string[];
   options: ProductOptions;
-  notes?: string;
-  storage?: string;
-  logistics?: string;
-  props: {
-    bg: string;
-    h: string;
-    padding: string;
-  };
-  route?: string;
-  cta?: string;
+  allergens?: string[];
+  props?: ProductOptionsProp;
 }
 
 export type ProductList = Product[];
