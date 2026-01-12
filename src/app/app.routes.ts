@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { productsResolver } from './core/resolvers/products.resolver';
 
 export const routes: Routes = [
   {
@@ -21,7 +22,8 @@ export const routes: Routes = [
         path: 'collection/:id',
         loadComponent: () =>
           import ('./pages/collection-item-page/collection-item-page')
-            .then(m => m.CollectionItemPage)
+            .then(m => m.CollectionItemPage),
+        resolve: { products: productsResolver }
       }
     ]
   },

@@ -8,20 +8,20 @@ export class CollectionService {
   private readonly collection: Collection[] = [
     {
       id: 'bouquets',
-      title: 'Bakery products',
-      description: 'A different kind of bouquet: flower-shaped cupcakes, as beautiful as they are delicious. Perfect for gifting or celebrating with charm.',
+      title: 'Floral Cupcake Bouquets',
+      description: 'Flowers you can eat. Edible Blooms. The perfect gift for a special occasion.',
       background: 'linear-gradient(135deg, white 0%, #a0cb5c 20%, #6ca771 50%, #a89bc0 80%, white 100%)',
     },
     {
       id: 'cakes',
-      title: 'Experience products',
-      description: 'Delicate handmade creations for your most special moments. Unique designs that blend flavor and style.',
+      title: 'Bespoke cakes',
+      description: 'Earth Mama cakes are born from nature and touched by magic. Inspired by earthy textures, blooming florals, and a sense of quiet enchantment.',
       background: 'linear-gradient(135deg, #fcb0b3, #ffdeaa, #c1d3fe)'
     },
     {
       id: 'edible-blooms',
-      title: 'Diference products',
-      description: 'Blooms you can eat and enjoy. Sweet bouquets crafted with fine pastry techniques to delight all the senses.',
+      title: 'Edible blooms',
+      description: 'Handcrafted edible blooms inspired by nature and enchantment.',
       background: 'linear-gradient(135deg, white 0%, #dba2b1 30%, #d88b6f 70%, white 100%)'
     },
     {

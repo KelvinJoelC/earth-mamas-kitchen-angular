@@ -1,17 +1,16 @@
-import { Component, inject, computed } from '@angular/core';
-import { AsyncPipe } from '@angular/common';
+import { Component, inject, computed, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../core/services/product.service';
 import { ProductOptions } from '../../core/models/product.model';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { BehaviorSubject, filter, map, tap } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { CollectionItemForm } from '../../features/collection/collection-item-form/collection-item-form';
 import { OrderApiService } from '../../core/services/order-api.service';
 
 @Component({
   selector: 'app-collection-item-page',
-  imports: [AsyncPipe, ReactiveFormsModule, CollectionItemForm, MatButtonModule],
+  imports: [ReactiveFormsModule, CollectionItemForm, MatButtonModule],
   templateUrl: './collection-item-page.html',
   styleUrl: './collection-item-page.scss',
 })
@@ -22,19 +21,12 @@ export class CollectionItemPage {
 
   submit$ = new BehaviorSubject(false);
 
-  productId!: string;
-
-  readonly product$ = this.route.paramMap.pipe(
-    map(params => params.get('id')),
-    filter((id): id is string => id !== null),
-    tap(id => {
-      this.productId = id;
-      return this.productService.loadProducts()
-    })
+  private readonly productId = signal(
+    this.route.snapshot.paramMap.get('id')!
   );
 
   readonly product = computed(() =>
-    this.productService.getProductById(this.productId)
+    this.productService.getProductById(this.productId())
   );
 
   form = new FormGroup({})
