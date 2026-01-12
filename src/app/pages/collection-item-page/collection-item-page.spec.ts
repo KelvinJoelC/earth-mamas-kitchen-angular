@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CatalogItemPage } from './catalog-item-page';
+import { CollectionItemPage } from './collection-item-page';
 
-describe('CatalogItemPage', () => {
-  let component: CatalogItemPage;
-  let fixture: ComponentFixture<CatalogItemPage>;
+describe('CollectionItemPage', () => {
+  let component: CollectionItemPage;
+  let fixture: ComponentFixture<CollectionItemPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CatalogItemPage]
+      imports: [CollectionItemPage]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CatalogItemPage);
+    fixture = TestBed.createComponent(CollectionItemPage);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

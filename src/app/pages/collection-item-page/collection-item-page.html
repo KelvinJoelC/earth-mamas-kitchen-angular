@@ -32,7 +32,7 @@
                     Order Now
                 </summary>
                 <form [formGroup]="form" (ngSubmit)="submit()">
-                    <app-catalog-item-form [form]="form" [id]="product.id"></app-catalog-item-form>
+                    <app-collection-item-form [form]="form" [id]="product.id"></app-collection-item-form>
                     <button type="submit" matButton class="primary">Submit</button>
                 </form>
             </details>

@@ -6,16 +6,16 @@ import { ProductOptions } from '../../core/models/product.model';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { BehaviorSubject, filter, map, tap } from 'rxjs';
-import { CatalogItemForm } from '../../features/catalog/catalog-item-form/catalog-item-form';
+import { CollectionItemForm } from '../../features/collection/collection-item-form/collection-item-form';
 import { OrderApiService } from '../../core/services/order-api.service';
 
 @Component({
-  selector: 'app-catalog-item-page',
-  imports: [AsyncPipe, ReactiveFormsModule, CatalogItemForm, MatButtonModule],
-  templateUrl: './catalog-item-page.html',
-  styleUrl: './catalog-item-page.scss',
+  selector: 'app-collection-item-page',
+  imports: [AsyncPipe, ReactiveFormsModule, CollectionItemForm, MatButtonModule],
+  templateUrl: './collection-item-page.html',
+  styleUrl: './collection-item-page.scss',
 })
-export class CatalogItemPage {
+export class CollectionItemPage {
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
   private readonly productService: ProductService = inject(ProductService);
   private readonly orderApiService: OrderApiService = inject(OrderApiService);

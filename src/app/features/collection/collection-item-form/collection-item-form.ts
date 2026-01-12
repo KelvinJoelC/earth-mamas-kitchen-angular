@@ -13,7 +13,7 @@ import { KelCheckbox } from '../../../shared/kel-checkbox/kel-checkbox';
 import { KelTextarea } from '../../../shared/kel-textarea/kel-textarea';
 
 @Component({
-  selector: 'app-catalog-item-form',
+  selector: 'app-collection-item-form',
   imports: [
     KelSelect,
     KelCheckbox,
@@ -25,10 +25,10 @@ import { KelTextarea } from '../../../shared/kel-textarea/kel-textarea';
     MatSelectModule,
     MatCheckboxModule
   ],
-  templateUrl: './catalog-item-form.html',
-  styleUrl: './catalog-item-form.scss',
+  templateUrl: './collection-item-form.html',
+  styleUrl: './collection-item-form.scss',
 })
-export class CatalogItemForm {
+export class CollectionItemForm {
   @Input({ required: true }) form!: FormGroup;
   @Input({ required: true }) id!: string;
   

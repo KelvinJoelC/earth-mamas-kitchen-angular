@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Catalog } from '../models/catalog.model';
+import { Collection } from '../models/collection.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CatalogService {
-  private catalog: Catalog[] = [
+export class CollectionService {
+  private readonly collection: Collection[] = [
     {
       id: 'bouquets',
       title: 'Bakery products',
@@ -32,7 +32,7 @@ export class CatalogService {
     },
   ];
 
-  getCatalog(): Catalog[] {
-    return this.catalog;
+  getCollection(): Collection[] {
+    return this.collection;
   }
 }

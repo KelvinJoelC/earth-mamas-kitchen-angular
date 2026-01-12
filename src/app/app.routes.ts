@@ -12,16 +12,16 @@ export const routes: Routes = [
             .then(m => m.HomePage)
       },
       {
-        path: 'catalog',
+        path: 'collection',
         loadComponent: () =>
-          import ('./pages/catalog-page/catalog-page')
-            .then(m => m.CatalogPage)
+          import ('./pages/collection-page/collection-page')
+            .then(m => m.CollectionPage)
       },
       {
-        path: 'catalog/:id',
+        path: 'collection/:id',
         loadComponent: () =>
-          import ('./pages/catalog-item-page/catalog-item-page')
-            .then(m => m.CatalogItemPage)
+          import ('./pages/collection-item-page/collection-item-page')
+            .then(m => m.CollectionItemPage)
       }
     ]
   },

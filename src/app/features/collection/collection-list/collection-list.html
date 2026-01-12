@@ -1,0 +1,7 @@
+<div class="embla" #emblaRoot>
+  <div class="embla__container collection-container">
+    @for(product of collection; track product){
+      <app-collection-item class="embla__slide" [product]="product"></app-collection-item>
+    }
+  </div>
+</div>

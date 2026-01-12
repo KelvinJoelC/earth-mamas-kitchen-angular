@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CatalogList } from './catalog-list';
+import { CollectionItemForm } from './collection-item-form';
 
-describe('CatalogList', () => {
-  let component: CatalogList;
-  let fixture: ComponentFixture<CatalogList>;
+describe('CollectionItemForm', () => {
+  let component: CollectionItemForm;
+  let fixture: ComponentFixture<CollectionItemForm>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CatalogList]
+      imports: [CollectionItemForm]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CatalogList);
+    fixture = TestBed.createComponent(CollectionItemForm);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
