@@ -14,8 +14,11 @@ export class KelCheckbox {
   @Input({ required: true })  form!: FormGroup;
 
   ngOnInit(): void {
+            console.log('Adding control for value:', this.field.key);
+
     if (!this.form.contains(this.field.key)) {
       const group = new FormGroup({});
+      
 
       this.field.values.forEach(value => {
         group.addControl( value.toString(), new FormControl(false));

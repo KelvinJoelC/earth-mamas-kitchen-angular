@@ -1,11 +1,11 @@
 <div [formGroup]="form" class="form-container">
-  @for (fields of fields$ | async; track fields.key) {
-    @switch (fields.config.type) {
+  @for (field of fields(); track field.key) {
+    @switch (field.config.type) {
       @case('checkbox') {
-        <app-kel-checkbox [form]="form" [field]="fields"/>
+        <app-kel-checkbox [form]="form" [field]="field"/>
       }
       @default {
-        <app-kel-select [form]="form" [field]="fields"/>
+        <app-kel-select [form]="form" [field]="field"/>
       }
     }
   }

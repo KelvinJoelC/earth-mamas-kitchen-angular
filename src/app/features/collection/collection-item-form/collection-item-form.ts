@@ -1,8 +1,6 @@
-import { Component, inject, Input } from '@angular/core';
-import { FormArray, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Component, computed, inject, Input, effect } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ProductService } from '../../../core/services/product.service';
-import { AsyncPipe } from '@angular/common';
-import { map, Observable, of } from 'rxjs';
 import { OPTION_CONFIG, OptionEntry, OptionKey, ProductOptions } from '../../../core/models/product.model';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -18,7 +16,6 @@ import { KelTextarea } from '../../../shared/kel-textarea/kel-textarea';
     KelSelect,
     KelCheckbox,
     KelTextarea,
-    AsyncPipe,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -33,30 +30,37 @@ export class CollectionItemForm {
   @Input({ required: true }) id!: string;
   
   private readonly productService = inject(ProductService);
+  
+  readonly product = computed(() =>
+    this.productService.getProductById(this.id)
+  );
+  
+  readonly fields = computed<OptionEntry[]>(() => {
+    const product = this.product();
+    if (!product?.options) return [];
 
-  fields$: Observable<OptionEntry[]> = of();
+    return Object.entries(product.options).map(([key, values]) => ({
+        key: key as keyof ProductOptions,
+        values,
+        config: OPTION_CONFIG[key as OptionKey]
+      }));
+  });
+
+   private readonly syncFormEffect = effect((): void => {
+    console.log('syncFormEffect triggered');
+    const fields = this.fields();
+    if (!fields.length || !this.form) return;
+
+    fields.forEach(item => {
+      // console.log('Processing item:', item);
+      if (!this.form.contains(item.key) && (item.config.type === 'text' || item.config.type === 'select')) {
+        this.form.addControl(item.key, new FormControl(''));
+      }
+    });
+  });
 
   ngOnInit(): void {
-    this.form.addControl('notes', new FormControl(''));    
-    // this.fields$ = this.productService.getProduct(this.id).pipe(
-    //   map(product => {
-    //     if (!product?.options) { return []; }
-    //     const fields:OptionEntry[] = Object.entries(product.options).map(([key, values]) => ({
-    //       key: key as keyof ProductOptions,
-    //       values,
-    //       config: OPTION_CONFIG[key as OptionKey]
-    //     }));
-
-    //     //Dynamic formControls for default
-    //     fields.forEach(item => {
-    //       if (!this.form.contains(item.key)) {
-    //         if (item.config.type === 'text' || item.config.type === 'select') {
-    //           this.form.addControl(item.key, new FormControl(''));
-    //         }
-    //       };
-    //     });
-    //     return fields;
-    //   })
-    // );
+    this.form.addControl('notes', new FormControl(''));
   }
+  
 } 
