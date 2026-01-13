@@ -58,6 +58,7 @@ export interface Product {
   options: ProductOptions;
   allergens?: string[];
   props?: ProductOptionsProp;
+  priceFrom?: number;
 }
 
 export type ProductList = Product[];
