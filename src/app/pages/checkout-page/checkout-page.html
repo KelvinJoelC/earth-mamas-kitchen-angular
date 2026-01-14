@@ -1,0 +1,25 @@
+<section class="container">
+  <h1>Checkout</h1>
+
+  <form [formGroup]="form">
+    <label>
+      Email
+      <input type="email" formControlName="email" />
+    </label>
+
+    <label>
+      Notes (optional)
+      <textarea formControlName="notes"></textarea>
+    </label>
+
+    <hr />
+
+    <p><strong>Total:</strong> {{ cart.total() }}</p>
+
+    <button
+      class="primary"
+      [disabled]="cart.items().length === 0">
+      Place order
+    </button>
+  </form>
+</section>

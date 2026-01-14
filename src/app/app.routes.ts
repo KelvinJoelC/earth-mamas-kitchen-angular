@@ -15,19 +15,25 @@ export const routes: Routes = [
       {
         path: 'collection',
         loadComponent: () =>
-          import ('./pages/collection-page/collection-page')
+          import('./pages/collection-page/collection-page')
             .then(m => m.CollectionPage)
       },
       {
         path: 'collection/:id',
         loadComponent: () =>
-          import ('./pages/collection-item-page/collection-item-page')
+          import('./pages/collection-item-page/collection-item-page')
             .then(m => m.CollectionItemPage),
         resolve: { products: productsResolver }
-      },{
+      }, {
         path: 'cart',
         loadComponent: () =>
-        import('./pages/cart-page/cart-page').then(m => m.CartPage),
+          import('./pages/cart-page/cart-page').then(m => m.CartPage),
+      },
+      {
+        path: 'checkout',
+        loadComponent: () =>
+          import('./pages/checkout-page/checkout-page')
+            .then(m => m.CheckoutPage),
       }
     ]
   },
