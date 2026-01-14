@@ -4,7 +4,7 @@ import { CartItem } from '../models/cart.model';
 const KEY = 'earth-mama-cart';
 
 @Injectable({ providedIn: 'root' })
-export class CartStorageService {
+export class CartStore {
 
   load(): CartItem[] {
     try {

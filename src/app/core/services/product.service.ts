@@ -1,8 +1,7 @@
 import { Injectable, signal, computed } from '@angular/core';
-import { Product, ProductList } from '../models/product.model';
-import { delay, Observable, of } from 'rxjs';
+import { Product } from '../models/product.model';
 import { supabase } from "../../../supabase";
-import { ProductsStorageService } from '../storage/products.storage.services';
+import { ProductsStore } from '../stores/products.store';
 
 
 @Injectable({
@@ -19,7 +18,7 @@ export class ProductService {
   readonly loading = computed(() => this._loading());
 
 
-  constructor(private storage: ProductsStorageService) {
+  constructor(private storage: ProductsStore) {
     this._items.set(this.storage.load());
   }
 
@@ -40,8 +39,8 @@ export class ProductService {
     this._loading.set(false);
   }
 
-  getProductById(id: string): Product | undefined{
-    return this._items().find( (p: any) => p.id === id);
+  getProductById(id: string): Product | undefined {
+    return this._items().find((p: any) => p.id === id);
   }
 
   async addProduct(item: Product) {
@@ -59,7 +58,7 @@ export class ProductService {
     const updated = [...this._items(), item];
     this._items.set(updated);
     this.storage.save(updated);
-  
+
     this._loading.set(false);
   }
 

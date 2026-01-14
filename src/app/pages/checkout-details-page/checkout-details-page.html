@@ -1,0 +1,13 @@
+<section>
+    <h2>Checkout details</h2>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <input placeholder="Full name" formControlName="fullName" />
+        <input placeholder="Email" formControlName="email" />
+        <input placeholder="Phone (optional)" formControlName="phone" />
+        <textarea placeholder="Notes" formControlName="notes"></textarea>
+        <button type="submit" [disabled]="form.invalid">
+            Continue
+        </button>
+    </form>
+</section>

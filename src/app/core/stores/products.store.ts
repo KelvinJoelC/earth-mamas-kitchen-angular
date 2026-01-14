@@ -4,7 +4,7 @@ import { Product } from '../models/product.model';
 const KEY = 'products';
 
 @Injectable({ providedIn: 'root' })
-export class ProductsStorageService {
+export class ProductsStore {
 
     load(): Product[] {
         if (typeof window === 'undefined') return [];

@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { productsResolver } from './core/resolvers/products.resolver';
+import { checkoutDetailsGuard } from './core/guards/checkout-payment-guard';
 
 export const routes: Routes = [
   {
@@ -34,6 +35,33 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./pages/checkout-page/checkout-page')
             .then(m => m.CheckoutPage),
+        children: [
+          {
+            path: '',
+            redirectTo: 'details',
+            pathMatch: 'full'
+          },
+          {
+            path: 'details',
+            loadComponent: () =>
+              import('./pages/checkout-details-page/checkout-details-page')
+                .then(m => m.CheckoutDetailsPage)
+          },
+          {
+            path: 'payment',
+            loadComponent: () =>
+              import('./pages/checkout-payment-page/checkout-payment-page')
+                .then(m => m.CheckoutPaymentPage),
+            canActivate: [checkoutDetailsGuard]
+          },
+          {
+            path: 'confirmation',
+            loadComponent: () =>
+              import('./pages/checkout-confirm-page/checkout-confirm-page')
+                .then(m => m.CheckoutConfirmPage),
+            canActivate: [checkoutDetailsGuard] //TODO: checkoutPayesGuard
+          }
+        ]
       }
     ]
   },

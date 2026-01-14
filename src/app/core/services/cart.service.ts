@@ -1,6 +1,6 @@
 import { Injectable, signal, computed } from '@angular/core';
 import { CartItem } from '../models/cart.model';
-import { CartStorageService } from '../storage/cart.storage';
+import { CartStore } from '../stores/cart.store';
 
 @Injectable({ providedIn: 'root' })
 export class CartService {
@@ -17,7 +17,7 @@ export class CartService {
   //TODO fix count type
   readonly count = computed(() => this._items().length);
 
-  constructor(private storage: CartStorageService) {
+  constructor(private storage: CartStore) {
     this._items.set(this.storage.load());
   }
 
