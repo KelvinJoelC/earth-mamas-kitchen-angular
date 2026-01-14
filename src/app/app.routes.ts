@@ -24,6 +24,10 @@ export const routes: Routes = [
           import ('./pages/collection-item-page/collection-item-page')
             .then(m => m.CollectionItemPage),
         resolve: { products: productsResolver }
+      },{
+        path: 'cart',
+        loadComponent: () =>
+        import('./pages/cart-page/cart-page').then(m => m.CartPage),
       }
     ]
   },
