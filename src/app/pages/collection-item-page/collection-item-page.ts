@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { BehaviorSubject } from 'rxjs';
 import { CollectionItemForm } from '../../features/collection/collection-item-form/collection-item-form';
 import { OrderApiService } from '../../core/services/order-api.service';
+import { CartItem } from '../../core/models/cart.model';
+import { CartService } from '../../core/services/cart.service';
 
 @Component({
   selector: 'app-collection-item-page',
@@ -17,8 +19,7 @@ import { OrderApiService } from '../../core/services/order-api.service';
 export class CollectionItemPage {
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
   private readonly productService: ProductService = inject(ProductService);
-  private readonly orderApiService: OrderApiService = inject(OrderApiService);
-
+  public readonly cartService = inject(CartService);
   submit$ = new BehaviorSubject(false);
 
   private readonly productId = signal(
@@ -32,14 +33,24 @@ export class CollectionItemPage {
   form = new FormGroup({})
 
   async submit() {
-    if (this.form.invalid) return;
-    const formValues: ProductOptions = this.form.value;
-    const item: any = {
-      id: Date.now().toString(),
-      title: this.productId,
-      options: formValues
+    // if (this.form.invalid) return;
+    // const formValues: ProductOptions = this.form.value;
+    // const item: any = {
+    //   id: Date.now().toString(),
+    //   title: this.productId,
+    //   options: formValues
+    // };
+
+    // this.submit$ = await this.orderApiService.addItem(item);
+    const item: CartItem = {
+      id: crypto.randomUUID(),
+      productId: this.productId(),
+      title: this.product()?.title ?? '',
+      
+      options: this.form.value,
+      totalPrice: 35
     };
 
-    this.submit$ = await this.orderApiService.addItem(item);
+    this.cartService.add(item);
   }
 }

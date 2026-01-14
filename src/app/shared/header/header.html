@@ -5,7 +5,7 @@
         </div>
         <div class="nav-right">
             <a [routerLink]="['/']" class="mat-icon-class">
-                <div matBadge="4">
+                <div matBadge="{{cartService.count()}}" matBadgeColor="accent" matBadgeOverlap="false" class="mat-icon-class">
                     <mat-icon class="icon-cake" fontSet="material-symbols-outlined" aria-label="cake icon">cake</mat-icon>
                 </div>
             </a>

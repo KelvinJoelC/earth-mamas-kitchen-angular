@@ -1,5 +1,11 @@
+import { CartItem } from "./cart.model";
+
 export interface Order {
-    id: string,
-    title: string,
-    options: {}
+  id: string;
+  email: string;
+
+  items: CartItem[];
+  total: number;
+
+  createdAt: string;
 }

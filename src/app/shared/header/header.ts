@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatBadgeModule} from '@angular/material/badge';
 import { RouterLink } from '@angular/router';
+import { CartService } from '../../core/services/cart.service';
 
 
 @Component({
@@ -11,5 +12,6 @@ import { RouterLink } from '@angular/router';
   styleUrl: './header.scss',
 })
 export class Header {
+  public readonly cartService = inject(CartService);
 
 }
