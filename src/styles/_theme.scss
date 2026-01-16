@@ -1,0 +1,17 @@
+@use './colors' as *;
+
+:root {
+  /* Backgrounds */
+  --bg-app: #{$linen};
+  --bg-surface: #{$parchment};
+  --bg-hover: #{$powder-petal};
+
+  /* Borders */
+  --border-default: #{$almond-silk};
+  --border-muted: #{$dust-grey};
+
+  /* Text */
+  --text-primary: #{$parchment};
+  --text-muted: #{$text-muted};
+}
+    

@@ -1,0 +1,35 @@
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  padding: .5rem 1.5rem;
+  border-radius: 1.5rem;
+  text-decoration: none;
+
+  color: var(--text-primary);
+  background-color: var(--border-default);
+  border: 1px solid var(--bg-surface);
+
+  transition: background-color .2s ease, border-color .2s ease;
+
+  &:hover {
+    background-color: var(--bg-hover);
+    border-color: var(--border-default);
+  }
+
+  &[aria-current='page'] {
+    background-color: var(--border-muted);
+    border-color: var(--border-default);
+    font-weight: 500;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--border-default);
+  }
+  
+  &.is-loading {
+    opacity: 0.6;
+    pointer-events: none;
+    cursor: progress;
+  }
+}

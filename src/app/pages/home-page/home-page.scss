@@ -46,6 +46,13 @@ section{
         font-size: 2rem;
         padding: 2rem;
     }
+    .divider{
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+    }
+
+
 }
 
 p {
@@ -54,9 +61,6 @@ p {
   margin: 2.5rem;
 }
 
-.btn-collection{
-    padding: 2rem;
-}
 
 @media (min-width: 768px) {
     .hero-container{

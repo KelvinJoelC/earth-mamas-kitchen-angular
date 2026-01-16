@@ -13,7 +13,9 @@
 <section class="explore-container">
     <h1>Explore the BR Range</h1>    
     <app-collection-list></app-collection-list>
-    <a [routerLink]="['/collection']" class="btn-collection">View Catalog</a>
+    <div class="divider">
+        <a [routerLink]="['/collection']" class="nav-link">View Catalog</a>
+    </div>
 </section>
 <section class="rewards-container">
     <app-marquee-horizontal [word]="'Rewards'"></app-marquee-horizontal>
