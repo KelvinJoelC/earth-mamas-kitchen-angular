@@ -7,7 +7,8 @@
 @use '@angular/material' as mat;
 @use'./styles/theme.scss';
 @use './styles/nav-button.scss';
-
+@use '@fontsource-variable/dancing-script';
+@use '@fontsource/calistoga';
 html {
   height: 100%;
   @include mat.theme((
@@ -15,7 +16,7 @@ html {
       primary: mat.$rose-palette,
       tertiary: mat.$red-palette,
     ),
-    typography: Roboto,
+    // typography: Roboto,
     density: 0,
   ));
 }
@@ -31,8 +32,7 @@ body {
   // variables at https://material.angular.dev/guide/system-variables
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
-  font: var(--mat-sys-body-medium);
-
+  font-family: 'Calistoga', system-ui;
   // Reset the user agent margin.
   margin: 0;
   height: 100%;
