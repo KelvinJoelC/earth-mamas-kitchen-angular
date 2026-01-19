@@ -8,6 +8,7 @@
   box-sizing: border-box;
   min-width: 317px;
   padding-top: 2rem;
+  cursor: auto;
 }
 
 .card {
@@ -20,10 +21,10 @@
   height: 500px;
   border-radius: 1.5rem;
   border: 1px solid black;
-
-  &:hover {
+  
+  transition:  all 700ms ease-in-out;
+  .slide:hover & {
     border: 1px solid white;
-
   }
 }
 
@@ -37,7 +38,9 @@
   border-radius: 1.5rem;
   margin-top: 1rem;
 
-  &:hover {
+  
+  transition:  all 700ms ease-in-out;
+  .slide:hover & {
     width: 100%;
     margin: 0;
   }
@@ -52,6 +55,13 @@
   margin: auto;
   cursor: pointer;
   padding: 20px;
+  
+  
+  transition:  all 700ms ease-in-out;
+  .slide:hover & {
+    scale: 120%;
+    top: -2rem;
+  }
 
 }
 
