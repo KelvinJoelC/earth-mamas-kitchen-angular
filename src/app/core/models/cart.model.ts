@@ -3,5 +3,5 @@ export interface CartItem {
   productId: string;
   title: string;
   options: Record<string, any>;
-  totalPrice: number;
+  totalPrice?: number;
 }

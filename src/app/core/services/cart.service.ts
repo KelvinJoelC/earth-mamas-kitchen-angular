@@ -12,7 +12,7 @@ export class CartService {
   readonly loading = computed(() => this._loading());
 
   readonly total = computed(() =>
-    this._items().reduce((sum, i) => sum + i.totalPrice, 0)
+    this._items().reduce((sum, i) => sum + (i.totalPrice || 0), 0)
   );
   //TODO fix count type
   readonly count = computed(() => this._items().length);

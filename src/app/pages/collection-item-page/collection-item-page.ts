@@ -9,6 +9,7 @@ import { CollectionItemForm } from '../../features/collection/collection-item-fo
 import { OrderApiService } from '../../core/services/order-api.service';
 import { CartItem } from '../../core/models/cart.model';
 import { CartService } from '../../core/services/cart.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-collection-item-page',
@@ -20,6 +21,8 @@ export class CollectionItemPage {
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
   private readonly productService: ProductService = inject(ProductService);
   public readonly cartService = inject(CartService);
+  private readonly router = inject(Router);
+
   submit$ = new BehaviorSubject(false);
 
   private readonly productId = signal(
@@ -33,24 +36,17 @@ export class CollectionItemPage {
   form = new FormGroup({})
 
   async submit() {
-    // if (this.form.invalid) return;
-    // const formValues: ProductOptions = this.form.value;
-    // const item: any = {
-    //   id: Date.now().toString(),
-    //   title: this.productId,
-    //   options: formValues
-    // };
-
-    // this.submit$ = await this.orderApiService.addItem(item);
+    if (this.form.invalid) return;
     const item: CartItem = {
       id: crypto.randomUUID(),
       productId: this.productId(),
       title: this.product()?.title ?? '',
-      
       options: this.form.value,
-      totalPrice: 35
+      // totalPrice: 35
     };
-
+    //Navegar al carrito
+    console.log('Adding to cart:', item);
     this.cartService.add(item);
+    this.router.navigate(['/cart']);
   }
 }
