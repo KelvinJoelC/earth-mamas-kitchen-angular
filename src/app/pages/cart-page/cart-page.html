@@ -1,33 +1,72 @@
 <section class="container">
-  <h1>Your cart</h1>
+  <div class="header">
+    <div class="header-icons">
+      <a href="https://www.instagram.com/earthmamaskitchen" target="_blank" rel="noopener noreferrer">
+        <!-- <InstagramIcon class="size-5" /> -->
+        icon
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=100067897911008" target="_blank">
+        <!-- <FacebookIcon class="size-5" /> -->
+        icon
+      </a>
+    </div>
+    <div class="header-title">
+      <h1>Earth Mama Kitchen</h1>
+      <h2>Bake like you mean it.</h2>
+    </div>
+  </div>
 
   @if (cart.items().length === 0) {
-    <p>Your cart is empty</p>
+  <p>Your cart is empty</p>
   } @else {
+  <section class="cart-items">
+    <h2>Your Cart</h2>
+    <div class="cart-items-list">
+      <ul class="cart-list">
+        @for (item of cart.items(); track item.id) {
+        <li class="order-card group" [attr.data-id]="item.id">
+          <div class="order-header">
+            <h3 class="title">{{ item.title }}</h3>
+            <button class="delete-btn" aria-label="Delete order" (click)="cart.remove(item.id)">
+              ✕
+            </button>
+          </div>
+          <ul class="options">
+            @for (opt of objectEntries(item.options); track opt.key) {
 
-    <ul>
-      @for (item of cart.items(); track item.id) {
-        <li>
-          <h3>{{ item.title }}</h3>
+            <!-- Opciones normales -->
+            @if (opt.key !== 'addOns' && opt.value) {
+            <li>
+              <span class="option-key">{{ opt.key }}:</span>
+              <span class="option-value">{{ opt.value }}</span>
+            </li>
+            }
 
-          <pre>{{ item.options }}</pre>
+            @if (opt.key === 'addOns' && activeAddOns(opt.value).length) {
+            <li class="addons">
+              <span class="option-key">Add ons:</span>
 
-          <strong>{{ item.totalPrice }}</strong>
+              <ul class="add-ons">
+                @for (addOn of activeAddOns(opt.value); track addOn) {
+                <li>- {{ addOn }}</li>
+                }
+              </ul>
+            </li>
+            }
+            }
+          </ul>
 
-          <button (click)="cart.remove(item.id)">
-            Remove
-          </button>
         </li>
-      }
-    </ul>
+        }
+      </ul>
+    </div>
+  </section>
 
-    <hr />
+  <p><strong>Total:</strong> {{ cart.total() }}</p>
+  <!-- pipe for currency -->
 
-    <p><strong>Total:</strong> {{ cart.total() }}</p>  
-    <!-- pipe for currency -->
-
-    <a routerLink="/checkout" class="primary">
-      Proceed to checkout
-    </a>
+  <a routerLink="/checkout" class="primary">
+    Proceed to checkout
+  </a>
   }
 </section>
