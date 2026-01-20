@@ -1,31 +1,39 @@
 import { supabase } from "../../../supabase";
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from "rxjs";
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { Order } from "../models/order.model";
+import { CartService } from "./cart.service";
+import { Router } from "@angular/router";
 @Injectable({
   providedIn: 'root',
 })
 export class OrderApiService {
+  //Devolver éxito / error
+  //Crear pedidos
 
-  private _cartItems = new BehaviorSubject<Order[]>([]);
-  cartItems$ = this._cartItems.asObservable();
 
-  async addItem(order: Order): Promise<any> {
-    const currentCart = this._cartItems.value;
-    this._cartItems.next([...currentCart, order]);
-    const { data, error } = await supabase
-      .from('orders')
-      .insert(order)
-      .select('*'); //To Obtain the inserted record
+  private readonly cart = inject(CartService);
+  private readonly router = inject(Router);
 
-    if (error) {
-      // Revert the cart 
-      this._cartItems.next(currentCart);
-      throw new Error(error.message);
+  private readonly _loading = signal(false);
+  readonly loading = computed(() => this._loading());
+
+  async create(order: Order): Promise<void> {
+    this._loading.set(true);
+
+    try {
+      const { error } = await supabase
+        .from('orders')
+        .insert(order);
+
+      if (error) throw error;
+
+      this.cart.clear();
+      this.router.navigate(['/checkout/success']);
+
+    } catch (err) {
+      throw err;
+    } finally {
+      this._loading.set(false);
     }
-    return {
-      data: data
-    }
-
   }
 }

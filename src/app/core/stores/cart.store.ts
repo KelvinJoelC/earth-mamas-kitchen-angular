@@ -22,3 +22,6 @@ export class CartStore {
     localStorage.removeItem(KEY);
   }
 }
+
+// ✔️ add / remove / clear
+// ✔️ signals + computed

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class CheckoutDetailsPage {
 
-  private readonly checkoutStore = inject(CheckoutStore);
+  private readonly checkout: CheckoutStore = inject(CheckoutStore);
   private readonly router = inject(Router);
 
   readonly form = new FormGroup({
@@ -22,7 +22,7 @@ export class CheckoutDetailsPage {
   });
 
   submit() {
-    // this.checkoutStore.setDetails(this.form.getRawValue()); TODO: Uncomment when CheckoutDetails type is fixed
+    //this.checkout.setDetails(this.form.getRawValue()); //TODO: Uncomment when Order type is fixed
     this.router.navigate(['/checkout/payment']);
   }
 }

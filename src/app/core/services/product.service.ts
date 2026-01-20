@@ -61,7 +61,8 @@ export class ProductService {
 
     this._loading.set(false);
   }
-
+  
+  //CRUD de productos
 
   //    private products: Product[] = [
   //   {

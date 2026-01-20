@@ -1,12 +1,10 @@
 import { Component, inject, computed, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../core/services/product.service';
-import { ProductOptions } from '../../core/models/product.model';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { BehaviorSubject } from 'rxjs';
 import { CollectionItemForm } from '../../features/collection/collection-item-form/collection-item-form';
-import { OrderApiService } from '../../core/services/order-api.service';
 import { CartItem } from '../../core/models/cart.model';
 import { CartService } from '../../core/services/cart.service';
 import { Router } from "@angular/router";
@@ -46,7 +44,7 @@ export class CollectionItemPage {
     };
     //Navegar al carrito
     console.log('Adding to cart:', item);
-    this.cartService.add(item);
+    // this.cartService.add(item);
     this.router.navigate(['/cart']);
   }
 }

@@ -1,8 +1,8 @@
-export interface CheckoutDetails {
-  fullName: string;
-  email: string;
+export interface CheckoutCustomer {
+  name?: string;
+  email?: string;
   phone?: string;
   notes?: string;
 }
 
-export type CheckoutStep = 'details' | 'review' | 'completed';
+export type CheckoutStep = 'details' | 'review' | 'confirm' | 'completed';

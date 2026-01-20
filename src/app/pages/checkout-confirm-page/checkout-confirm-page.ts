@@ -8,4 +8,18 @@ import { Component } from '@angular/core';
 })
 export class CheckoutConfirmPage {
 
+  // async onSubmit() {
+  //   const order: Order = {
+  //     // details: detail, 
+  //     items: this.cart.items(),
+  //     total: this.cart.total(),
+  //     createdAt: new Date().toISOString()
+  //   };
+
+  //   try {
+  //     await this.orders.create(order);
+  //   } catch {
+  //     // TODO: Modal service to show error
+  //   }
+  // }
 }

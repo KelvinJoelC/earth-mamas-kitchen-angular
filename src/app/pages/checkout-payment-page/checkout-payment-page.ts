@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CheckoutStore } from '../../core/stores/checkout.store';
 
 @Component({
   selector: 'app-checkout-payment-page',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './checkout-payment-page.scss',
 })
 export class CheckoutPaymentPage {
-
+  private readonly checkout: CheckoutStore = inject(CheckoutStore);
+  
+  continue() {
+    this.checkout.goTo('confirm');
+  }
 }
