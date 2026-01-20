@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { CartService } from '../../core/services/cart.service';
+import {RouterLink} from '@angular/router';
 
 @Component({
-  standalone: true,
   selector: 'app-cart-page',
+  imports: [RouterLink],
   templateUrl: './cart-page.html',
   styleUrl: './cart-page.scss',
 })
@@ -19,5 +20,4 @@ export class CartPage {
       .filter(([, value]) => value)
       .map(([key]) => key);
   }
-
 }

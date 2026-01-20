@@ -65,7 +65,7 @@
   <p><strong>Total:</strong> {{ cart.total() }}</p>
   <!-- pipe for currency -->
 
-  <a routerLink="/checkout" class="primary">
+  <a [routerLink]="['/checkout']" class="nav-link">
     Proceed to checkout
   </a>
   }
