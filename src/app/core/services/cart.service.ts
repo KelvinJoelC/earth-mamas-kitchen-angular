@@ -9,8 +9,10 @@ export class CartService {
   
   private readonly _items = signal<CartItem[]>([]);
   readonly items = computed(() => this._items());
+  readonly count = computed(() => this._items().length);
 
-  addOptimistic(item: CartItem): () => void {
+
+  add(item: CartItem): () => void {
     const previous = this._items();
     this._items.set([...previous, item]);
 

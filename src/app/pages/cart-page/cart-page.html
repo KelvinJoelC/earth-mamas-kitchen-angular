@@ -27,7 +27,8 @@
         <li class="order-card group" [attr.data-id]="item.id">
           <div class="order-header">
             <h3 class="title">{{ item.title }}</h3>
-            <button class="delete-btn" aria-label="Delete order" (click)="cart.remove(item.id)">
+            <button class="delete-btn" aria-label="Delete order" >
+              <!-- (click)="cart.remove(item.id)" -->
               ✕
             </button>
           </div>
@@ -62,7 +63,7 @@
     </div>
   </section>
 
-  <p><strong>Total:</strong> {{ cart.total() }}</p>
+  <!-- <p><strong>Total:</strong> {{ cart.total() }}</p> -->
   <!-- pipe for currency -->
 
   <a [routerLink]="['/checkout']" class="nav-link">

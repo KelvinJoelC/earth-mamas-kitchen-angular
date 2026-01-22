@@ -18,8 +18,10 @@ import { Router } from "@angular/router";
 export class CollectionItemPage {
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
   private readonly productService: ProductService = inject(ProductService);
-  public readonly cartService = inject(CartService);
   private readonly router = inject(Router);
+
+  public readonly cartService = inject(CartService);
+
 
   submit$ = new BehaviorSubject(false);
 
@@ -27,14 +29,16 @@ export class CollectionItemPage {
     this.route.snapshot.paramMap.get('id')!
   );
 
+  readonly detailsFormOpen = signal(true);
   readonly product = computed(() =>
     this.productService.getProductById(this.productId())
   );
 
   form = new FormGroup({})
 
-  async submit() {
+  submit() {
     if (this.form.invalid) return;
+
     const item: CartItem = {
       id: crypto.randomUUID(),
       productId: this.productId(),
@@ -42,9 +46,15 @@ export class CollectionItemPage {
       options: this.form.value,
       // totalPrice: 35
     };
-    //Navegar al carrito
     console.log('Adding to cart:', item);
-    // this.cartService.add(item);
+    this.cartService.add(item);
     this.router.navigate(['/cart']);
   }
+
+  reset() {
+    this.cartService.clear();
+    this.detailsFormOpen.set(false);
+    this.form.reset();
+  }
+  
 }

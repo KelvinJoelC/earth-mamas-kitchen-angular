@@ -25,14 +25,14 @@
                     available.
                 </div>
             </details> -->
-            <details id='preOrderDetail' open class="">
+            <details [open]="detailsFormOpen()" class="">
                 <summary class="summary-btn ">
                     Order Now
                 </summary>
                 <form [formGroup]="form" (ngSubmit)="submit()">
                     <app-collection-item-form [form]="form" [id]="product.id"></app-collection-item-form>
-                    <button type="submit" matButton class="primary" [disabled]="cartService.loading()">Submit</button>
-                    <button type="button" matButton class="secondary" (click)="cartService.clear()">Reset</button>
+                    <button type="submit" matButton class="primary">Submit</button>
+                    <button type="button" matButton class="secondary" (click)="reset()">Reset</button>
                 </form>
             </details>
         </div>
