@@ -6,8 +6,9 @@
     <div class="content">
       <h3>{{product.title}}</h3>
       <p>{{product.description}}</p>
-      <a [routerLink]="['collection', product.id]" class="nav-link" >
-        View More
+      <a [routerLink]="['collection', product.id]" class="nav-link" [class.is-loading]="productService.loading()">
+        <span class="text">View More</span>
+        <mat-progress-spinner class="spinner" mode="indeterminate" diameter="16"></mat-progress-spinner>
       </a>
     </div>
   </div>

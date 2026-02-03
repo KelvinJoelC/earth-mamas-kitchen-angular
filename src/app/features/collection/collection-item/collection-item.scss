@@ -94,3 +94,10 @@
     font-size: 1rem;
   }
 }
+
+@media (max-width: 768px) {
+    .card-image {
+      width: 70%;
+    }
+
+}
