@@ -6,11 +6,18 @@
         </div>
     </div>
 </section>
-@for(item of collection; track item){
-    <section class="item" [style.background]="item.background" >
+@for(item of collection(); track item){
+<section class="item" [style.background]="item.background">
+    <div class="container">
         <h3>{{item.title}}</h3>
         <p>{{item.description}}</p>
-        <a [routerLink]="['collection', item.id]">ViewMore</a>
-        <img class="card-image animate-slideIn" src="/img/mermaidCake.webp" alt=""/>
-    </section>
+        <a [routerLink]="['/collection', item.id]" class="nav-link" [class.is-loading]="productService.loading()">
+            @if (productService.loading()) {
+            <mat-progress-spinner mode="indeterminate" diameter="16"></mat-progress-spinner>
+            } @else { View More }
+        </a>
+        <img class="card-image animate-slideIn" src="/img/mermaidCake.webp" alt="" />
+    </div>
+
+</section>
 }

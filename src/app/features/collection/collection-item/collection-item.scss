@@ -39,7 +39,6 @@
   border-radius: 1.5rem;
   margin-top: 1rem;
 
-  
   transition:  all 700ms ease-in-out;
   .slide:hover & {
     width: 100%;
@@ -56,12 +55,12 @@
   margin: auto;
   cursor: pointer;
   padding: 20px;
-  
+  top: 0;
   
   transition:  all 700ms ease-in-out;
   .slide:hover & {
     scale: 120%;
-    // top: -2rem;  //TODO> Correct
+    top: -2rem;
   }
 
 }
