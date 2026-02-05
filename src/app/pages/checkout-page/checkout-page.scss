@@ -1,0 +1,17 @@
+.checkout-grid {
+  display: flex;
+  gap: 2rem;
+}
+
+.checkout-left {
+  flex: 2;
+}
+
+.checkout-right {
+  flex: 1;
+  position: sticky;
+  top: 120px;
+  background: #f5ebe0;
+  border-radius: 20px;
+  padding: 24px;
+}

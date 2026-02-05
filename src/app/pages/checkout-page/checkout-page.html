@@ -1,3 +1,13 @@
-<section class="checkout-container">
-  <router-outlet />
-</section>
+<div class="checkout-container">
+  <app-kel-checkout-steps></app-kel-checkout-steps>
+   <div class="checkout-grid">
+    <div class="checkout-left">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="checkout-right">
+      <app-order-summary></app-order-summary>
+       HIHI
+    </div>  
+
+  </div>
+</div>

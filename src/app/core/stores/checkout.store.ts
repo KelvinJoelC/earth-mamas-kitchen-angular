@@ -1,32 +1,42 @@
 import { Injectable, signal, computed } from '@angular/core';
-import { CheckoutStep } from '../models/checkout-details.model';
-import { Order } from '../models/order.model';
+import { CartItem } from '../../core/models/cart.model';
+import { CheckoutCustomer, CheckoutStep } from '../../core/models/checkout-details.model';
 
 @Injectable({ providedIn: 'root' })
 export class CheckoutStore {
 
-  private readonly _step = signal<CheckoutStep>('details');
-  private readonly _details = signal<Order | null>(null);
+  cart = signal<CartItem[]>([]);
+  details = signal<CheckoutCustomer | null>(null);
+  paymentCompleted = signal(false);
+  orderId = signal<string | null>(null);
 
-  readonly step = computed(() => this._step());
-  readonly details = computed(() => this._details());
+  subtotal = computed(() => this.cart().reduce((acc, i) => acc +  0 * 1, 0)); // i.price  i.qty
+  deliveryPrice = signal(0);
+  total = computed(() => this.subtotal() + this.deliveryPrice());
 
-  readonly isDetailsCompleted = computed(() =>
-    this._details()
-  );
+  currentStep = signal<CheckoutStep>('details');
 
   goTo(step: CheckoutStep) {
-    this._step.set(step);
+    this.currentStep.set(step);
   }
 
-  setDetails(details: Order) {
-    this._details.set(details);
-    this._step.set('review');
+  setDetails(details: CheckoutCustomer) {
+    this.details.set(details);
+    this.goTo('payment');
+  }
+
+  completePayment(orderId: string) {
+    this.paymentCompleted.set(true);
+    this.orderId.set(orderId);
+    this.goTo('confirm');
   }
 
   reset() {
-    this._step.set('details');
-    this._details.set(null);
+    this.cart.set([]);
+    this.details.set(null);
+    this.paymentCompleted.set(false);
+    this.orderId.set(null);
+    this.currentStep.set('details');
+    this.deliveryPrice.set(0);
   }
-  
 }

@@ -1,1 +1,36 @@
-<p>checkout-payment-page works!</p>
+<section class="checkout-payment">
+
+  <h2>Payment</h2>
+
+  <!-- Resumen del pedido -->
+  <div class="payment-summary">
+    <p><strong>Order for:</strong></p>  
+     <!-- {{ details()?.firstName }} {{ details()?.lastName }} -->
+    <p><strong>Total:</strong> ${{ total() }}</p>
+  </div>
+
+  <!-- Formulario fake pago -->
+  <form (ngSubmit)="pay()" class="payment-form">
+
+    <label>
+      Card Number
+      <input type="text" placeholder="1234 5678 9012 3456" required>
+    </label>
+
+    <label>
+      Expiration Date
+      <input type="text" placeholder="MM/YY" required>
+    </label>
+
+    <label>
+      CVC
+      <input type="text" placeholder="123" required>
+    </label>
+
+    <button type="submit" [disabled]="loading">
+      {{ loading ? 'Processing...' : 'Pay $' + total() }}
+    </button>
+
+  </form>
+
+</section>

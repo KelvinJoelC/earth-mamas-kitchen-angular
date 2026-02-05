@@ -5,9 +5,9 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout-details-page',
-  standalone: true,
   imports: [ReactiveFormsModule],
-  template: './checkout-details-page.html',
+  templateUrl: './checkout-details-page.html',
+  styleUrl: '././checkout-details-page.scss',
 })
 export class CheckoutDetailsPage {
 

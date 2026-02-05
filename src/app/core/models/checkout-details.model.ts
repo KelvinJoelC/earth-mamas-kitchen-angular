@@ -5,4 +5,4 @@ export interface CheckoutCustomer {
   notes?: string;
 }
 
-export type CheckoutStep = 'details' | 'review' | 'confirm' | 'completed';
+export type CheckoutStep = 'details' | 'payment' | 'confirm';

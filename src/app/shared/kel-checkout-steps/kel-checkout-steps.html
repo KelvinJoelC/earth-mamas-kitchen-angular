@@ -1,0 +1,13 @@
+<nav class="stepper">
+  <ul>
+    @for (step of steps ; track step.key) {
+    <li [class]="getStepClass(step.key)">
+      <span class="icon">{{ step.icon }}</span>
+      <span class="label">{{ step.label }}</span>
+      @if( step !== steps[steps.length -1]) {
+              <span class="line"></span>
+      }
+    </li>
+    }
+  </ul>
+</nav>

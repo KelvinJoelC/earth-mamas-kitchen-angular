@@ -1,0 +1,20 @@
+<section class="order-summary">
+    <h3>Your Order</h3>
+    <ul>
+        @for( item of cart(); track item.id) {
+        <li>
+            <!-- <span>{{ item.name }} x{{ item.qty }}</span>
+            <span>${{ item.price * item.qty }}</span> -->
+        </li>
+        }
+    </ul>
+
+    <div class="totals">
+        <p>Subtotal: <span>${{ subtotal() }}</span></p>
+        @if(orderType() === 'delivery'){
+        <p>Delivery: <span>${{ deliveryPrice() }}</span></p>
+        }
+        <p class="total">Total: <span>${{ total() }}</span></p>
+    </div>
+
+</section>

@@ -1,1 +1,38 @@
-<p>checkout-confirm-page works!</p>
+<section class="checkout-confirm">
+
+  <div class="success-message">
+    <h1>🎉 Thank you!</h1>
+    <p>Your order <strong>#{{ orderId() }}</strong> has been successfully placed.</p>
+  </div>
+
+  <div class="order-summary">
+    <h2>Order Summary</h2>
+
+    <ul>
+      @for(item of cart(); track item.id) {
+      <li>
+        <!-- <span>{{ item.name }} ({{ item.qty }})</span>
+        <span>${{ item.price * item.qty }}</span> -->
+      </li>
+      }
+
+    </ul>
+
+    <div class="totals">
+      <p><strong>Total:</strong> ${{ total() }}</p>
+    </div>
+
+    <div class="customer-info">
+      <!-- <p><strong>Pickup/Delivery:</strong> {{ details()?.orderType }}</p>
+      <p><strong>Name:</strong> {{ details()?.firstName }} {{ details()?.lastName }}</p> -->
+      @if(details()?.phone) {
+      <p><strong>Phone:</strong> {{ details()?.phone }}</p>}
+      @if(details()?.email) {
+      <p><strong>Email:</strong> {{ details()?.email }}</p>
+      }
+    </div>
+  </div>
+
+  <button (click)="backToHome()">Back to Home</button>
+
+</section>

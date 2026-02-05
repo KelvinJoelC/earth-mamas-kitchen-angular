@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CheckoutStore } from '../../core/stores/checkout.store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout-confirm-page',
@@ -8,18 +10,16 @@ import { Component } from '@angular/core';
 })
 export class CheckoutConfirmPage {
 
-  // async onSubmit() {
-  //   const order: Order = {
-  //     // details: detail, 
-  //     items: this.cart.items(),
-  //     total: this.cart.total(),
-  //     createdAt: new Date().toISOString()
-  //   };
+   private store = inject(CheckoutStore);
+  private router = inject(Router);
 
-  //   try {
-  //     await this.orders.create(order);
-  //   } catch {
-  //     // TODO: Modal service to show error
-  //   }
-  // }
+  cart = this.store.cart;
+  details = this.store.details;
+  orderId = this.store.orderId;
+  total = this.store.total;
+
+  backToHome() {
+    this.store.reset(); 
+    this.router.navigate(['/']);
+  }
 }

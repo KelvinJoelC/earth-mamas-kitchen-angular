@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CheckoutStore } from '../../core/stores/checkout.store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout-payment-page',
@@ -8,9 +9,27 @@ import { CheckoutStore } from '../../core/stores/checkout.store';
   styleUrl: './checkout-payment-page.scss',
 })
 export class CheckoutPaymentPage {
-  private readonly checkout: CheckoutStore = inject(CheckoutStore);
+
+
+  private readonly router = inject(Router);
+  private readonly store: CheckoutStore = inject(CheckoutStore);
   
-  continue() {
-    this.checkout.goTo('confirm');
+  cart = this.store.cart;
+  details = this.store.details;
+  total = this.store.total;
+
+  loading = false;
+
+  pay() {
+    if (this.cart().length === 0 || !this.details()) return;
+
+    this.loading = true;
+
+    //simulate payment processing
+    setTimeout(() => {
+      const orderId = 'ORD' + Math.floor(Math.random() * 10000);
+      this.store.completePayment(orderId);
+      this.router.navigate(['/checkout/confirm']);
+    }, 1500);
   }
 }
